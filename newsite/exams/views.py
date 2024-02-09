@@ -12,5 +12,5 @@ from .utils import menu, DataMixin
 class First(DataMixin, TemplateView):
     template_name = 'exams/index.html'
     title_page = 'Главная страница'
-    message = f"Добро пожаловать на сайт! Уже зарегистрировано участников!"
-    # message = f"Добро пожаловать на сайт! Уже зарегистрировано {auth.get_user_model().objects.count()} участников!"
+    # message = f"Добро пожаловать на сайт! Уже зарегистрировано участников!"
+    message = f"Добро пожаловать на сайт! Уже зарегистрировано {auth.get_user_model().objects.count()} участников!"

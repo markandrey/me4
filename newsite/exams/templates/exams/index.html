@@ -3,7 +3,8 @@
 {% block content %}
 <h1>{{ title }}</h1>
 <p>Здравствуйте
-
+    {% if user.is_authenticated %} {{ user.last_name }} {{ user.first_name }} {{ user.surname }}
+    {% endif %}!</p>
 <p>{{ message }}</p>
 <p>Этот сайт создан для пациентов доктора Марка А. М.</p>
 <p>Для участия - необходимо получить консультацию в медицинском центре "Андромеда" на Кузнечной 10А.</p>
