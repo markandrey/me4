@@ -135,4 +135,4 @@ LOGOUT_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'users:login'
 
-# AUTH_USER_MODEL = 'users.user'
+AUTH_USER_MODEL = 'users.user'
