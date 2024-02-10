@@ -1,6 +1,8 @@
-{% load static %}
-
 <!DOCTYPE html>
+
+{% load static %}
+{% load exam_tags %}
+
 <html>
 <head>
 	<title>{{title}}</title>
@@ -40,6 +42,7 @@
 		{% else %}
 		<li><a href="{% url 'home' %}">Медицинский ликбез</a></li>
 		{% endif %}
+		{% show_categories cat_selected %}
 	</ul>
 	</td>
 <!-- Конец Sidebar'а -->
