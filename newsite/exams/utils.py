@@ -13,10 +13,11 @@ menu = [{'title': "О сайте", 'url_name': 'home'},
 
 
 cats_db = [
-    {'id': 1, 'name': 'Питание'},
-    {'id': 2, 'name': 'Физическая активность'},
-    {'id': 3, 'name': 'ИМТ'},
-    {'id': 4, 'name': 'О препаратах'},
+    {'id': 1, 'name': 'Питание', 'url_name': 'nutrition'},
+    {'id': 2, 'name': 'Физическая активность', 'url_name': 'activity'},
+    {'id': 3, 'name': 'ИМТ', 'url_name': 'bmi'},
+    {'id': 4, 'name': 'О препаратах', 'url_name': 'about_medicines'},
+    {'id': 5, 'name': 'О докторе', 'url_name': 'about_doc'},
 ]
 
 

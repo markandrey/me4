@@ -1,11 +1,11 @@
 from django.contrib import auth
-# from django.http import HttpResponse
+from django.http import request
 from django.shortcuts import render, redirect
-# from django.urls import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import FormView, CreateView, TemplateView, ListView
-#
-# from .forms import AddExamForm, UploadFileForm
-# from .models import Exam, UploadFiles, Analysis
+
+from .forms import AddExamForm
+from .models import Exam, Analysis
 from .utils import menu, DataMixin
 
 
@@ -15,19 +15,15 @@ class First(DataMixin, TemplateView):
     message = f"Добро пожаловать на сайт! Уже зарегистрировано {auth.get_user_model().objects.count()} участников!"
 
 
-def show_all(request):
-    # all_exams = Exam.objects.filter(patient=request.user.pk)
-    all_exams = []
-    # all_ans = Analysis.objects.filter(patient=request.user.pk)
-    all_ans = []
+class ShowCaseHistory(DataMixin, TemplateView):
+    template_name = "exams/show_all.html"
 
-    data = {
-        'title': 'Вся медицинская информация.',
-        'menu': menu,
-        "all_exams": all_exams,
-        "all_ans": all_ans,
-    }
-    return render(request,"exams/show_all.html", context=data)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Данные медицинских исследований и анализов"
+        context['exams_lst'] = Exam.objects.filter(patient=self.request.user.pk)
+        context['analyses_lst'] = Analysis.objects.filter(patient=self.request.user.pk)
+        return context
 
 
 def info(request):
@@ -46,3 +42,36 @@ def info(request):
         'form': form,
     }
     return render(request, 'exams/file_upload.html', context=data)
+
+
+class AddExam(DataMixin, FormView):
+    form_class = AddExamForm
+    template_name = 'exams/addexam.html'
+    success_url = reverse_lazy('home')
+    title_page = 'Добавление результата исследования'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+# далее - представления из левого бокового меню
+
+class ShowNutrition(DataMixin, TemplateView):
+    template_name = 'exams/show_nutrition.html'
+
+
+class ShowActivity(DataMixin, TemplateView):
+    template_name = 'exams/show_activity.html'
+
+
+class BMI(DataMixin, TemplateView):
+    template_name = 'exams/show_bmi.html'
+
+
+class AboutMedicines(DataMixin, TemplateView):
+    template_name = 'exams/about_medicines.html'
+
+
+class AboutDoc(DataMixin, TemplateView):
+    template_name = 'exams/about_doc.html'
