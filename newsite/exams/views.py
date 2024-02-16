@@ -26,24 +26,6 @@ class ShowCaseHistory(DataMixin, TemplateView):
         return context
 
 
-def info(request):
-    # if request.method == 'POST':
-    #     form = UploadFileForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         fp = UploadFiles(file=form.cleaned_data['file'], patient=request.user)
-    #         fp.save()
-    # else:
-    #     form = UploadFileForm()
-    form = ''
-
-    data = {
-        'title': 'Добавление результата',
-        'menu': menu,
-        'form': form,
-    }
-    return render(request, 'exams/file_upload.html', context=data)
-
-
 class AddExam(DataMixin, FormView):
     form_class = AddExamForm
     template_name = 'exams/addexam.html'
@@ -56,7 +38,6 @@ class AddExam(DataMixin, FormView):
 
 
 # далее - представления из левого бокового меню
-
 class ShowNutrition(DataMixin, TemplateView):
     template_name = 'exams/show_nutrition.html'
 

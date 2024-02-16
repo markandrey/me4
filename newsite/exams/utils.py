@@ -1,6 +1,6 @@
 menu = [{'title': "О сайте", 'url_name': 'home'},
         {'title': "Показать все данные", 'url_name': 'all'},
-        {'title': "Переслать фото результата", 'url_name': 'send_info'},
+        {'title': "Переслать фото результата", 'url_name': 'add_exam'},
         ]
 
 
